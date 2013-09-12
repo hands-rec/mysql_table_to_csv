@@ -20,7 +20,7 @@ sql_show_full_columns="show full columns from "
 
 for table in `cat ${show_table_file}`
 do
-	echo ${table}
-	mysql -u${user} -p${password} -h${host} -A ${database} -e "${sql_show_full_columns} ${table}" | sed -e 's/,/ /g' | sed -e 's/\t/,/g' > ${dir_tables}/${table}".csv"
+  echo ${table}
+  mysql -u${user} -p${password} -h${host} -A ${database} -e "${sql_show_full_columns} ${table}" | sed -e 's/,/ /g' | sed -e 's/\t/,/g' > ${dir_tables}/${table}".csv"
 done
 
