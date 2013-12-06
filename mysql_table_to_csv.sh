@@ -22,5 +22,8 @@ for table in `cat ${show_table_file}`
 do
   echo ${table}
   mysql -u${user} -p${password} -h${host} -A ${database} -e "${sql_show_full_columns} ${table}" | sed -e 's/,/ /g' | sed -e 's/\t/,/g' > ${dir_tables}/${table}".csv"
+  
+  sed -i -e "s/^/${table},/" ${dir_tables}/${table}".csv"
 done
 
+cat ${dir_tables}/*.csv > ${dir_tables}/all_tables.csv
